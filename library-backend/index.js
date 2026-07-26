@@ -1,5 +1,10 @@
 const { ApolloServer } = require("@apollo/server")
 const { startStandaloneServer } = require("@apollo/server/standalone")
+const mongoose = require('mongoose')
+const config = require('./utils/config')
+
+const Author = require('./models/author')
+const Book = require('./models/books')
 
 let authors = [
   {
@@ -194,12 +199,24 @@ const resolvers = {
 
 }
 
+mongoose.set('strictQuery', false)
+
+mongoose
+  .connect(config.MONGODB_URI)
+  .then(() => {
+    console.log('Connected to MongoDB')
+  })
+  .catch(error => {
+    console.log('Error connecting to MongoDB:')
+    console.log(error.message)
+  })
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 })
 
-startStandaloneServer(server, {
+startStandaloneServer(server, { 
   listen: { port: 4000 },
 }).then(({ url }) => {
   console.log(`Server ready at ${url}`)
