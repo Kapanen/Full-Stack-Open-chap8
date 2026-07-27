@@ -12,7 +12,10 @@ if(!MONGODB_URI) {
     )
 }
 
+const JWT_SECRET = process.env.JWT_SECRET
+
 module.exports = {
     MONGODB_URI,
-    PORT
+    PORT,
+    JWT_SECRET
 }
