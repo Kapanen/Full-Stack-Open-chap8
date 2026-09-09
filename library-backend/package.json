@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,8 @@
     "graphql": "^16.13.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.8.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }
