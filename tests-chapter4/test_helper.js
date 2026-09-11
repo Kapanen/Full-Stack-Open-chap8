@@ -1,3 +1,9 @@
+const path = require('path')
+const dotenv = require('../library-backend/node_modules/dotenv')
+
+dotenv.config({ path: path.resolve(__dirname, '..', 'library-backend', '.env') })
+process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret-key'
+
 const {
   ApolloServer,
 } = require('../library-backend/node_modules/@apollo/server')
@@ -9,8 +15,6 @@ const resolvers = require('../library-backend/resolvers')
 const Author = require('../library-backend/models/author')
 const Book = require('../library-backend/models/book')
 const User = require('../library-backend/models/user')
-
-process.env.JWT_SECRET = 'test-secret-key'
 
 const initialAuthors = [
   { name: 'Robert Martin', born: 1952 },

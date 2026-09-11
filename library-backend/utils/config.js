@@ -1,10 +1,10 @@
-const path = require("path")
+const path = require('path')
 const dotenv = require('dotenv')
 
-dotenv.config({ path: path.resolve (__dirname, '..', '.env')})
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') })
 
 const PORT = process.env.PORT || 3003
-const MONGODB_URI =  process.env.MONGODB_URI
+const MONGODB_URI = process.env.MONGODB_URI
 
 if(!MONGODB_URI) {
     console.error(
